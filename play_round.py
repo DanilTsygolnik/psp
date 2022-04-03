@@ -64,3 +64,16 @@ def define_scenario(user_choice, player_one, player_two, deuce_status):
         leader.set_score("15")
     scenario_id = "Going to next round"
     return scenario_id
+
+def finish_round(scenario_id, testing=False):
+    if not testing:
+        print(scenario_id)
+        game_over = (scenario_id in ["Player 1 wins", "Player 2 wins"])
+        if game_over:
+        # заглушки на время тестов
+        #    return enter_menu("menu_template.txt")
+        #return play_round(round_num+1, player_one, player_two, deuce_status)
+            pass # удалить после тестов
+    if scenario_id in ["Player 1 wins", "Player 2 wins"]:
+        return "game over"
+    return "next round"

@@ -101,5 +101,38 @@ class TestDefineScenario(unittest.TestCase):
         self.assertEqual(test_output, correct_output)
         self.assertEqual(player_one.get_score(), "15")
 
+class TestFinishRound(unittest.TestCase):
+
+    def test_1(self):
+        scenario_id = "Player 1 wins"
+        test_result = finish_round(scenario_id, True)
+        correct_output = "game over"
+        self.assertEqual(test_result, correct_output)
+
+    def test_2(self):
+        scenario_id = "Player 2 wins"
+        test_result = finish_round(scenario_id, True)
+        correct_output = "game over"
+        self.assertEqual(test_result, correct_output)
+
+    def test_3(self):
+        scenario_id = "Player 1 has advantage"
+        test_result = finish_round(scenario_id, True)
+        correct_output = "next round"
+        self.assertEqual(test_result, correct_output)
+
+    def test_4(self):
+        scenario_id = "Player 2 has advantage"
+        test_result = finish_round(scenario_id, True)
+        correct_output = "next round"
+        self.assertEqual(test_result, correct_output)
+
+    def test_5(self):
+        scenario_id = "Going to next round"
+        test_result = finish_round(scenario_id, True)
+        correct_output = "next round"
+        self.assertEqual(test_result, correct_output)
+
+
 if __name__=="__main__":
     unittest.main()
