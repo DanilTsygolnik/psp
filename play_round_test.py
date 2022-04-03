@@ -1,6 +1,7 @@
 import unittest
 from play_round import *
 from player_class import *
+from deuce_class import *
 
 class TestStage3(unittest.TestCase):
 
@@ -23,12 +24,15 @@ class TestStage3(unittest.TestCase):
 
 class TestDefineScenario(unittest.TestCase):
 
+    def setUp(self):
+        self.deuce = Deuce()
+
     def test_1(self):
         user_choice = 1
         player_one = Player("40+")
         player_two = Player("40")
-        game_in_deuce = True
-        test_output = define_scenario(user_choice, player_one, player_two, game_in_deuce)
+        self.deuce.set_value(True)
+        test_output = define_scenario(user_choice, player_one, player_two, self.deuce)
         correct_output = "Player 1 wins"
         self.assertEqual(test_output, correct_output)
 
@@ -36,8 +40,7 @@ class TestDefineScenario(unittest.TestCase):
         user_choice = 2
         player_one = Player("30")
         player_two = Player("40")
-        game_in_deuce = False
-        test_output = define_scenario(user_choice, player_one, player_two, game_in_deuce)
+        test_output = define_scenario(user_choice, player_one, player_two, self.deuce)
         correct_output = "Player 2 wins"
         self.assertEqual(test_output, correct_output)
 
@@ -45,8 +48,8 @@ class TestDefineScenario(unittest.TestCase):
         user_choice = 1
         player_one = Player("40")
         player_two = Player("40")
-        game_in_deuce = True
-        test_output = define_scenario(user_choice, player_one, player_two, game_in_deuce)
+        self.deuce.set_value(True)
+        test_output = define_scenario(user_choice, player_one, player_two, self.deuce)
         correct_output = "Player 1 has advantage"
         self.assertEqual(test_output, correct_output)
         self.assertEqual(player_one.get_score(), "40+")
@@ -55,8 +58,8 @@ class TestDefineScenario(unittest.TestCase):
         user_choice = 1
         player_one = Player("40")
         player_two = Player("40+")
-        game_in_deuce = True
-        test_output = define_scenario(user_choice, player_one, player_two, game_in_deuce)
+        self.deuce.set_value(True)
+        test_output = define_scenario(user_choice, player_one, player_two, self.deuce)
         correct_output = "Going to next round"
         self.assertEqual(test_output, correct_output)
         self.assertEqual(player_two.get_score(), "40")
@@ -65,19 +68,17 @@ class TestDefineScenario(unittest.TestCase):
         user_choice = 1
         player_one = Player("30")
         player_two = Player("40")
-        game_in_deuce = False
-        test_output = define_scenario(user_choice, player_one, player_two, game_in_deuce)
+        test_output = define_scenario(user_choice, player_one, player_two, self.deuce)
         correct_output = "Going to next round"
         self.assertEqual(test_output, correct_output)
         self.assertEqual(player_one.get_score(), "40")
-        self.assertTrue(game_in_deuce)
+        self.assertTrue(self.deuce)
 
     def test_6(self):
         user_choice = 1
         player_one = Player("30")
         player_two = Player("30")
-        game_in_deuce = False
-        test_output = define_scenario(user_choice, player_one, player_two, game_in_deuce)
+        test_output = define_scenario(user_choice, player_one, player_two, self.deuce)
         correct_output = "Going to next round"
         self.assertEqual(test_output, correct_output)
         self.assertEqual(player_one.get_score(), "40")
@@ -86,8 +87,7 @@ class TestDefineScenario(unittest.TestCase):
         user_choice = 1
         player_one = Player("15")
         player_two = Player("30")
-        game_in_deuce = False
-        test_output = define_scenario(user_choice, player_one, player_two, game_in_deuce)
+        test_output = define_scenario(user_choice, player_one, player_two, self.deuce)
         correct_output = "Going to next round"
         self.assertEqual(test_output, correct_output)
         self.assertEqual(player_one.get_score(), "30")
@@ -96,8 +96,7 @@ class TestDefineScenario(unittest.TestCase):
         user_choice = 1
         player_one = Player("love")
         player_two = Player("30")
-        game_in_deuce = False
-        test_output = define_scenario(user_choice, player_one, player_two, game_in_deuce)
+        test_output = define_scenario(user_choice, player_one, player_two, self.deuce)
         correct_output = "Going to next round"
         self.assertEqual(test_output, correct_output)
         self.assertEqual(player_one.get_score(), "15")

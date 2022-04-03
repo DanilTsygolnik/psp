@@ -29,7 +29,7 @@ def show_scores(round_num, player_one, player_two, testing=False):
                         ])
     return output_str
 
-def define_scenario(user_choice, player_one, player_two, game_in_deuce):
+def define_scenario(user_choice, player_one, player_two, deuce_status):
     player_one_wins = (user_choice == 1)
     if player_one_wins:
         leader = player_one
@@ -44,6 +44,7 @@ def define_scenario(user_choice, player_one, player_two, game_in_deuce):
     if leader_score == "40+":
         scenario_id = "".join([scenario_id_template, "wins"])
         return scenario_id
+    game_in_deuce = deuce_status.check()
     if leader_score == "40":
         if not game_in_deuce:
             scenario_id = "".join([scenario_id_template, "wins"])
@@ -56,7 +57,7 @@ def define_scenario(user_choice, player_one, player_two, game_in_deuce):
     if leader_score == "30":
         leader.set_score("40")
         if loser_score == "40":
-            game_in_deuce = True
+            deuce_status.set_value(True)
     if leader_score == "15":
         leader.set_score("30")
     if leader_score == "love":
