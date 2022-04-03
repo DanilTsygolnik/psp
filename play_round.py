@@ -17,11 +17,3 @@ def choose_winner(test_input=None):
         print("Wrong input. Please try again.")
         return choose_winner(None)
     return "wrong_input"
-
-def update_score(user_choice, player_one, player_two):
-    player_one_wins = (user_choice == 1)
-    if player_one_wins:
-        player_one.add_point()
-        return 1
-    player_two.add_point()
-    return 2
