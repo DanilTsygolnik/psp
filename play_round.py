@@ -68,7 +68,8 @@ def play_round(round_num, player_one, player_two, deuce_status):
         print(scenario_id)
         game_over = (scenario_id in ["Player 1 wins", "Player 2 wins"])
         if game_over:
-            return enter_menu("menu_template.txt")
+            #return enter_menu("menu_template.txt")
+            return tennis()
         return play_round(round_num+1, player_one, player_two, deuce_status)
 
     user_choice = choose_winner()
@@ -77,4 +78,5 @@ def play_round(round_num, player_one, player_two, deuce_status):
         scenario_id = define_scenario(user_choice, player_one, player_two, deuce_status)
         show_scores(round_num, player_one, player_two)
         return finish_round(scenario_id)
-    return enter_menu("menu_template.txt")
+    #return enter_menu("menu_template.txt")
+    return tennis()
