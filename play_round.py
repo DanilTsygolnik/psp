@@ -1,3 +1,5 @@
+from enter_menu import *
+
 def choose_winner(test_input=None):
     print("Please, choose the winner of this round.\n",
           "Enter 1 for player1; 2 for player2; 0 to finish the game.")
@@ -18,16 +20,10 @@ def choose_winner(test_input=None):
         return choose_winner(None)
     return "wrong_input"
 
-def show_scores(round_num, player_one, player_two, testing=False):
-    if not testing:
-        print("".join( [ "==== ", "Round ", str(round_num), " score ===="]))
-        print(" ".join(["Player 1 -- ", player_one.get_score()]))
-        print(" ".join(["Player 2 -- ", player_two.get_score()]))
-    output_str = "".join(["==== ", "Round ", str(round_num), " score ====\n",
-                          "Player 1 -- ", player_one.get_score(), "\n",
-                          "Player 2 -- ", player_two.get_score() 
-                        ])
-    return output_str
+def show_scores(round_num, player_one, player_two):
+    print("".join( [ "==== ", "Round ", str(round_num), " score ===="]))
+    print(" ".join(["Player 1 -- ", player_one.get_score()]))
+    print(" ".join(["Player 2 -- ", player_two.get_score()]))
 
 def define_scenario(user_choice, player_one, player_two, deuce_status):
     player_one_wins = (user_choice == 1)
@@ -65,15 +61,20 @@ def define_scenario(user_choice, player_one, player_two, deuce_status):
     scenario_id = "Going to next round"
     return scenario_id
 
-def finish_round(scenario_id, testing=False):
-    if not testing:
+
+def play_round(round_num, player_one, player_two, deuce_status):
+
+    def finish_round(scenario_id):
         print(scenario_id)
         game_over = (scenario_id in ["Player 1 wins", "Player 2 wins"])
         if game_over:
-        # заглушки на время тестов
-        #    return enter_menu("menu_template.txt")
-        #return play_round(round_num+1, player_one, player_two, deuce_status)
-            pass # удалить после тестов
-    if scenario_id in ["Player 1 wins", "Player 2 wins"]:
-        return "game over"
-    return "next round"
+            return enter_menu("menu_template.txt")
+        return play_round(round_num+1, player_one, player_two, deuce_status)
+
+    user_choice = choose_winner()
+    game_goes_on = (user_choice != 0)
+    if game_goes_on:
+        scenario_id = define_scenario(user_choice, player_one, player_two, deuce_status)
+        show_scores(round_num, player_one, player_two)
+        return finish_round(scenario_id)
+    return enter_menu("menu_template.txt")
