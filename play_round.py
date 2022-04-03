@@ -59,6 +59,7 @@ def define_scenario(user_choice, player_one, player_two, game_in_deuce):
             game_in_deuce = True
     if leader_score == "15":
         leader.set_score("30")
-    leader.set_score("15")
+    if leader_score == "love":
+        leader.set_score("15")
     scenario_id = "Going to next round"
     return scenario_id
