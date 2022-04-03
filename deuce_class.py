@@ -1,7 +1,7 @@
 class Deuce:
 
-    def __init__(self):
-        self.__game_in_deuce = False
+    def __init__(self, status=False):
+        self.__game_in_deuce = status
 
     def check(self):
         return self.__game_in_deuce
