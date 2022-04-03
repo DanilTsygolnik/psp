@@ -1,11 +1,11 @@
 class Player:
 
-    def __init__(self):
-        self.__score = 0
+    def __init__(self, init_points:str="love"):
+        self.__score = init_points
         self.__has_advantage = False
 
-    def add_point(self):
-        self.__score += 1
+    def set_score(self, points):
+        self.__score = points
 
     def get_score(self):
         return self.__score
