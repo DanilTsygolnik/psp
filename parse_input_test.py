@@ -25,6 +25,16 @@ class TestParseInput(unittest.TestCase):
         correct_output = ["h3w4", "h3w7", "h3w10"]
         self.assertEqual(test_output, correct_output)
 
+    def test_get_alive_cells_ids(self):
+        input_file = "task_input.txt"
+
+        with self.assertRaises(TypeError):
+            get_alive_cells_ids(0, input_file)
+
+        test_output = get_alive_cells_ids({}, input_file)
+        correct_output = {'alive_cells_ids':["h2w5", "h3w4", "h3w5"]}
+        self.assertEqual(test_output, correct_output)
+
 
 if __name__=="__main__":
     unittest.main()
