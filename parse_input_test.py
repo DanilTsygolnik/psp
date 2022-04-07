@@ -12,5 +12,19 @@ class TestParseInput(unittest.TestCase):
         correct_output = 0
         self.assertEqual(empty_file_output, correct_output)
 
+    def test_search_alive_in_string(self):
+        string_num = 3
+        input_string = "......"
+        test_output = search_alive_in_string(string_num, input_string)
+        correct_output = []
+        self.assertEqual(test_output, correct_output)
+
+        string_num = 3
+        input_string = "...*..*..*"
+        test_output = search_alive_in_string(string_num, input_string)
+        correct_output = ["h3w4", "h3w7", "h3w10"]
+        self.assertEqual(test_output, correct_output)
+
+
 if __name__=="__main__":
     unittest.main()

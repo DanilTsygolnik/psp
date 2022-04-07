@@ -13,3 +13,13 @@ def get_chart_sizes(input_file):
                 return chart_parameters
             string_index += 1
     return 0
+
+def search_alive_in_string(string_num, string):
+    alive_cells_ids = []
+    char_num = 1
+    for char in string:
+        if char == "*":
+            new_id = "".join(["h", str(string_num), "w", str(char_num)])
+            alive_cells_ids.append(new_id)
+        char_num += 1
+    return alive_cells_ids
