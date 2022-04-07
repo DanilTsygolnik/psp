@@ -7,5 +7,9 @@ def get_chart_sizes(input_file):
                 separated_sizes = string_with_sizes.split()
                 height = int(separated_sizes[0])
                 width = int(separated_sizes[1])
-                return [height, width]
+                chart_parameters = {}
+                chart_parameters["height"] = height
+                chart_parameters["width"] = width
+                return chart_parameters
             string_index += 1
+    return 0
