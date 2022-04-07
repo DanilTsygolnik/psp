@@ -40,3 +40,8 @@ def get_alive_cells_ids(chart_parameters, input_file):
             string_index += 1
     chart_parameters['alive_cells_ids'] = alive_cells_ids
     return chart_parameters
+
+def parse_input(input_file):
+    chart_dimensions = get_chart_sizes(input_file)
+    chart_parameters =  get_alive_cells_ids(chart_dimensions, input_file)
+    return chart_parameters
