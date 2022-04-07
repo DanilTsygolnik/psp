@@ -34,7 +34,7 @@ def get_alive_cells_ids(chart_parameters, input_file):
         string_index = 0
         for string in file:
             if string_index >= 2:
-                string_num = string_index + 1
+                string_num = string_index - 1
                 current_string_ids = search_alive_in_string(string_num, string)
                 alive_cells_ids += current_string_ids
             string_index += 1
