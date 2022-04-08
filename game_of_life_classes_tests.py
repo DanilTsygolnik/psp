@@ -5,12 +5,11 @@ class TestCell(unittest.TestCase):
     '''dev step 2.1'''
 
     def setUp(self):
-        cell_id = "h1w1"
         height_coord = 1
         width_coord = 1
         neighbors_ids = set(["h2w1", "h0w1"])
         is_alive = True
-        self.test_cell = Cell(cell_id, height_coord, width_coord, is_alive, neighbors_ids)
+        self.test_cell = Cell(height_coord, width_coord, is_alive, neighbors_ids)
 
     def test_get_cell_id(self):
         cell_id = "h1w1"

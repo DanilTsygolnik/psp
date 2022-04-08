@@ -1,7 +1,7 @@
 class Cell:
 
-    def __init__(self, cell_id, height_coord, width_coord, is_alive, neighbors_ids):
-        self.__cell_id = cell_id
+    def __init__(self, height_coord, width_coord, is_alive, neighbors_ids):
+        self.__cell_id = "".join(["h", str(height_coord), "w", str(width_coord)])
         self.__height_coord = height_coord
         self.__width_coord = width_coord
         self.__is_alive = is_alive
