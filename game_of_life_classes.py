@@ -1,10 +1,10 @@
 class Cell:
 
-    def __init__(self, height_coord, width_coord, is_alive):
+    def __init__(self, height_coord, width_coord):
         self.__cell_id = "".join(["h", str(height_coord), "w", str(width_coord)])
         self.__height_coord = height_coord
         self.__width_coord = width_coord
-        self.__is_alive = is_alive
+        self.__is_alive = False 
         self.__neighbors_ids = None
         self.__neighbors = None
 

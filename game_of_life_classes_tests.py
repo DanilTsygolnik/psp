@@ -7,8 +7,7 @@ class TestCell(unittest.TestCase):
     def setUp(self):
         height_coord = 1
         width_coord = 1
-        is_alive = True
-        self.test_cell = Cell(height_coord, width_coord, is_alive)
+        self.test_cell = Cell(height_coord, width_coord)
 
     def test_get_cell_id(self):
         cell_id = "h1w1"
@@ -23,11 +22,11 @@ class TestCell(unittest.TestCase):
         self.assertEqual(self.test_cell.get_cell_width(), width_coord)
 
     def test_get_cell_status(self):
-        self.assertTrue(self.test_cell.get_cell_status())
+        self.assertFalse(self.test_cell.get_cell_status())
 
     def test_set_cell_status(self):
-        self.test_cell.set_cell_status(False)
-        self.assertFalse(self.test_cell.get_cell_status())
+        self.test_cell.set_cell_status(True)
+        self.assertTrue(self.test_cell.get_cell_status())
 
     def test_get_neighbors_ids(self):
         self.assertIs(self.test_cell.get_neighbors_ids(), None)
