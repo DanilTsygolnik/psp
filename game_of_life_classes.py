@@ -1,11 +1,11 @@
 class Cell:
 
-    def __init__(self, height_coord, width_coord, is_alive, neighbors_ids):
+    def __init__(self, height_coord, width_coord, is_alive):
         self.__cell_id = "".join(["h", str(height_coord), "w", str(width_coord)])
         self.__height_coord = height_coord
         self.__width_coord = width_coord
         self.__is_alive = is_alive
-        self.__neighbors_ids = neighbors_ids
+        self.__neighbors_ids = None
         self.__neighbors = None
 
     def get_cell_id(self):
@@ -25,6 +25,9 @@ class Cell:
 
     def get_neighbors(self):
         return self.__neighbors
+
+    def add_neighbors_ids(self, neighbors_set):
+        self.__neighbors_ids = neighbors_set
 
     def set_cell_status(self, new_status):
         self.__is_alive = new_status
